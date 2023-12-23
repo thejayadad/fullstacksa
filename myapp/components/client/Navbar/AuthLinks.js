@@ -13,8 +13,8 @@ const AuthLinks =  async (  ) => {
         {!!session && (
             <>
               <Link href={'/post'}>Post</Link>
-              <Link href={'/account'}>
-                Hello, {session?.user?.name}
+              <Link href={'/profile'}>
+                {session?.user?.name}
               </Link>
               <Link href={'/create'}>Create</Link>
               <LogoutButton />
