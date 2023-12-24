@@ -12,11 +12,10 @@ const AuthLinks =  async (  ) => {
     <div className="flex items-center gap-4">
         {!!session && (
             <>
-              <Link href={'/post'}>Post</Link>
+              <Link href={'/admin'}>Admin</Link>
               <Link href={'/profile'}>
                 {session?.user?.name}
               </Link>
-              <Link href={'/create'}>Create</Link>
               <LogoutButton />
             </>
           )}
