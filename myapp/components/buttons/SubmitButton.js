@@ -7,7 +7,9 @@ export function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button type="submit" disabled={pending}>
+    <button
+    className='bg-mustard p-2 rounded-md hover:bg-yellow-800'
+    type="submit" disabled={pending}>
       {pending ? (
         <div className="flex justify-center items-center">
           <div className="spinner"></div>

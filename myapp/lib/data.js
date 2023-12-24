@@ -2,7 +2,20 @@ import db from "./db";
 import Profile from "@/models/Profile";
 import Category from "@/models/Category";
 import MenuItem from "@/models/MenuItem";
+import Drinks from "@/models/Drink";
 
+//GET ALL DRINKS
+export const getDrinks = async (q)=> {
+  const regex = new RegExp(q, "i");
+  try {
+    db.connect()
+    const drinks = await Drinks.find({ name: { $regex: regex } })
+    return drinks
+  } catch (error) {
+    throw new Error("Failed to fetch drinks!");
+
+  }
+}
 
 //CATEGORIES//
 export const getCategories = async (q) => {
@@ -55,7 +68,7 @@ export const getMenuItemsWithCategory = async () => {
       throw new Error('Failed to fetch MenuItems!');
     }
   };
-  
+      
 
 export const fetchProfileByEmail = async (email) => {
     try {

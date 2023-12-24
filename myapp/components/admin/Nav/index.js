@@ -1,16 +1,24 @@
-import Link from 'next/link'
-import React from 'react'
+'use client'
+import Modal from '@/components/modals'
+import React, { useState } from 'react';
 
-const AdminNav = () => {
+const NewCategory = () => {
+  const [isNewModalOpen, setNewModalOpen] = useState(false);
+
+  const openNewModal = () => {
+    setNewModalOpen(true);
+  };
+
+  const closeNewModal = () => {
+    setNewModalOpen(false);
+  };
   return (
-    <div
-    className='flex justify-center mx-auto max-w-screen-md'
-    >
-        <Link href={'/admin/category'}>
-            Category
-        </Link>
-    </div>
+    <Modal isOpen={isNewModalOpen} onClose={closeNewModal}>
+    {/* Add any content for the modal here */}
+    <h2>New Category Modal</h2>
+    
+  </Modal>
   )
 }
 
-export default AdminNav
+export default NewCategory

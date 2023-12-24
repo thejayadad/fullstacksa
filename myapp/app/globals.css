@@ -7,3 +7,25 @@ body{
   background: #f4f6ed;
 }
 
+/* Add this to create the underline effect on hover */
+.hover\:after:hover {
+  transform: scaleX(1);
+}
+
+/* Additional styles for the ::after pseudo-element */
+.after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background-color: transparent; /* Set to the background color you want for the underline */
+  transform-origin: 0% 50%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Styling the underline */
+.after:w-full {
+  width: 100%;
+}

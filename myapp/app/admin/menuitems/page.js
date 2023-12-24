@@ -1,13 +1,26 @@
+import Search from '@/components/Search';
 import MenuItem from '@/components/admin/Forms/MenuItem';
 import { getMenuItemsWithCategory } from '@/lib/data';
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const MenuItems = async () => {
   const menuitems = await getMenuItemsWithCategory();
 
   return (
-    <div className='bg-white px-4 mx-auto max-w-screen-xl border border-gray-200 shadow-sm'>
-      <div className="mx-auto max-w-screen-lg py-8 bg-white">
+    <div className='bg-white px-2 mx-auto max-w-screen-xl border border-t-transparent rounded-xl border-gray-200 shadow-sm'>
+      <div className="mx-auto max-w-screen-lg py-4 bg-white">
+      <div
+        className='flex justify-around items-center max-w-screen-lg p-6'
+        >
+        <Search placeholder='Search For MenuItem' />
+        <div>
+          <Link
+          className='relative ml-10 text-gray-500 font-mono font-bold tracking-[1px] hover:text-mustard hover:after:w-full after:bg-orange-400 after:h-[3px] after:left-0 after:bottom-0 after:rounded-xl after:absolute after:duration-300'
+          href={'/admin/menuitems/new'}>NewMenuItem</Link>
+        </div>
+        </div>
         <table className="min-w-full border rounded overflow-hidden leading-normal cursor-pointer">
           <thead className="bg-litePurple text-white border border-liteBlue">
             <tr>
@@ -37,8 +50,11 @@ const MenuItems = async () => {
                       <span
                       className='relative block'
                       >
-                      <img
+                      <Image
                         src={item.image}
+                        alt={item.name}
+                        height={100}
+                        width={50}
                         className='mx-auto object-cover rounded-full h-10 w-10 '
                       />
                       </span>

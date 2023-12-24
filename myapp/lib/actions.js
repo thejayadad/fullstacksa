@@ -6,18 +6,41 @@ import { redirect } from "next/navigation";
 import Profile from "@/models/Profile";
 import Category from "@/models/Category";
 import MenuItem from "@/models/MenuItem";
+import Drinks from "@/models/Drink";
+
+//DRINKS
+export const addDrinks = async (formData) => {
+  const { name, price} = 
+  Object.fromEntries(formData)
+  try {
+    db.connect()
+    const newDrinks = new Drinks({
+      name,
+      price
+    })
+    await newDrinks.save()
+  } catch (error) {
+    throw new Error("Failed to create drinks " + error);
+
+  }
+  revalidatePath("/admin/category");
+  redirect("/admin/category");
+
+}
 
 //MENUITEMS
 export const addMenuItem = async (formData) => {
-  const { name, image, desc, category} = 
+  const { name,  desc, price, drink, extras, category} = 
     Object.fromEntries(formData)
     try {
       db.connect()
       const newMenuItem = new MenuItem({
         name,
-        image,
         desc,
-        category
+        category,
+        drink,
+        extras,
+        price
       })
       await newMenuItem.save()
     } catch (error) {
