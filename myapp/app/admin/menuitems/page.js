@@ -6,24 +6,56 @@ const MenuItems = async () => {
   const menuitems = await getMenuItemsWithCategory();
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold mb-4">MenuItems</h2>
-      <div className="mx-auto max-w-screen-lg bg-white">
-        <table className="min-w-full border rounded overflow-hidden">
-          <thead className="bg-gray-800 text-white">
+    <div className='bg-white px-4 mx-auto max-w-screen-xl border border-gray-200 shadow-sm'>
+      <div className="mx-auto max-w-screen-lg py-8 bg-white">
+        <table className="min-w-full border rounded overflow-hidden leading-normal cursor-pointer">
+          <thead className="bg-litePurple text-white border border-liteBlue">
             <tr>
-              <th className="py-2 px-4">Name</th>
-              <th className="py-2 px-4">Category</th>
-              <th className="py-2 px-4">Update</th>
+            <th 
+              className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+              >Image</th>
+              <th 
+              className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+              >Name</th>
+          
+              <th 
+              className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+              >Category</th>
+              <th 
+              className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+              >Update</th>
             </tr>
           </thead>
           <tbody>
             {menuitems.map((item) => (
-              <tr key={item._id} className="border-b">
-                <td className="py-2 px-4">{item.name}</td>
-                <td className="py-2 px-4">{item.category.name}</td>
-                <td className="py-2 px-4">
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              <tr key={item._id} className="border-b items-cener">
+                <td 
+                className="px-5 py-5 text-sm bg-white border-b border-gray-200"
+                >
+                  <div className='flex items-center'>
+                    <div className='flex-shrink-0'>
+                      <span
+                      className='relative block'
+                      >
+                      <img
+                        src={item.image}
+                        className='mx-auto object-cover rounded-full h-10 w-10 '
+                      />
+                      </span>
+                    </div>
+                  </div>
+                
+                </td>
+                <td
+                 className="text-gray-900 whitespace-no-wrap"
+                >{item.name}</td>
+                <td 
+                 className="text-gray-900 whitespace-no-wrap"
+                 >{item.category.name}</td>
+                <td 
+                 className="text-gray-900 whitespace-no-wrap"
+                 >
+                  <button className="bg-mustard hover:bg-liteBlue text-white font-bold py-2 px-4 rounded">
                     Update
                   </button>
                 </td>
