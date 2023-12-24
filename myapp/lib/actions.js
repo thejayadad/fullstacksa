@@ -25,7 +25,7 @@ export const addMenuItem = async (formData) => {
 
     }
     revalidatePath("/admin/menuitems");
-    redirect("/admin/menuitems");
+    redirect("/admin/menuitems ");
 }
 
 //CATEGORIES//

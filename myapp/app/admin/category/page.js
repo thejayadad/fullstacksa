@@ -1,14 +1,19 @@
+import Search from '@/components/Search'
 import { SubmitButton } from '@/components/buttons/SubmitButton'
 import { addCategory } from '@/lib/actions'
 import { getCategories } from '@/lib/data'
 import Link from 'next/link'
 import React from 'react'
 
-const CategoryPage = async () => {
-    const categories = await getCategories()
+const CategoryPage = async ({searchParams}) => {
+    const q = searchParams?.q || "";
+    const categories = await getCategories(q)
+
   return (
     <section className='px-4 py-8'>
         <div className='max-w-screen-lg items-center mx-auto p-2'>
+            <h2 className='text-center'>Search</h2>
+            <Search placeholder='Search' />
         <div className=''>
         <form
         action={addCategory}
